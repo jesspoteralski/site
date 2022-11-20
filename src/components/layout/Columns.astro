@@ -1,0 +1,20 @@
+---
+const { columns = 12, start = 1, end = -1 } = Astro.props
+---
+
+<section>
+  <div>
+    <slot />
+  </div>
+</section>
+
+<style define:vars={{ columns, start, end }}>
+  section {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+  }
+  div {
+    grid-column-start: var(--start);
+    grid-column-end: var(--end);
+  }
+</style>

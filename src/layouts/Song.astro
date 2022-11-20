@@ -1,0 +1,43 @@
+---
+import Container from "../components/layout/Container.astro"
+import Head from "../components/head/SongHead.astro"
+
+export interface Props {
+  content: {
+    title: string
+    key: string
+  }
+}
+
+const {
+  content: { title, key },
+} = Astro.props
+---
+
+<html lang='en'>
+  <head>
+    <Head title={title} />
+    <style>
+      .title {
+        font-size: 2em;
+        margin: 0.25em 0 0;
+      }
+      hr {
+        border-top: 1px solid #ddd;
+        margin: 1rem 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <article>
+        <h1 class='title'>{title}</h1>
+        <hr />
+        <Container width={960}>
+          <slot />
+        </Container>
+      </article>
+    </main>
+  </body>
+</html>
