@@ -1,0 +1,20 @@
+---
+const { start = 1, end = -1 } = Astro.props
+---
+
+<div>
+  <slot />
+</div>
+
+<style define:vars={{ start, end }}>
+  div {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  @container (min-width: 720px) {
+    div {
+      grid-column-start: var(--start);
+      grid-column-end: var(--end);
+    }
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+const { hug, width = "1200px", margin = "5vw" } = Astro.props
+const start = hug === "start" ? 1 : 2
+const end = hug === "end" ? -1 : 3
+---
+
+<article>
+  <div>
+    <slot />
+  </div>
+</article>
+
+<style define:vars={{ start, end, margin, width }}>
+  article {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns:
+      minmax(var(--margin), 1fr)
+      minmax(auto, var(--width))
+      minmax(var(--margin), 1fr);
+    overflow-x: hidden;
+    width: 100%;
+  }
+  div {
+    grid-column-start: var(--start);
+    grid-column-end: var(--end);
+  }
+</style>

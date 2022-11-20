@@ -1,0 +1,16 @@
+---
+const { columns = 12, gap = 0 } = Astro.props
+---
+
+<section>
+  <slot />
+</section>
+
+<style define:vars={{ columns, gap }}>
+  section {
+    container: grid / inline-size;
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(var(--columns), 1fr);
+  }
+</style>
